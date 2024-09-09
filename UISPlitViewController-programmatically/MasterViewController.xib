@@ -20,18 +20,39 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngP-zG-rEz">
+                    <rect key="frame" x="0.0" y="44" width="414" height="36.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="YOUR INBOX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqx-cZ-wVs">
+                            <rect key="frame" x="12" y="8" width="283.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNASSIGNED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vui-f6-v4c">
+                            <rect key="frame" x="295.5" y="8" width="106.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <edgeInsets key="layoutMargins" top="8" left="12" bottom="8" right="12"/>
+                </stackView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PG4-zU-nlk">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="80.5" width="414" height="781.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="H3N-Cc-MVz"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="PG4-zU-nlk" firstAttribute="top" secondItem="H3N-Cc-MVz" secondAttribute="top" id="OGs-gl-ER0"/>
+                <constraint firstItem="ngP-zG-rEz" firstAttribute="bottom" secondItem="PG4-zU-nlk" secondAttribute="top" id="6TE-Z7-P4d"/>
+                <constraint firstItem="H3N-Cc-MVz" firstAttribute="trailing" secondItem="ngP-zG-rEz" secondAttribute="trailing" id="6uu-HJ-lpB"/>
+                <constraint firstItem="ngP-zG-rEz" firstAttribute="top" secondItem="H3N-Cc-MVz" secondAttribute="top" id="IF5-an-ZJZ"/>
                 <constraint firstItem="H3N-Cc-MVz" firstAttribute="trailing" secondItem="PG4-zU-nlk" secondAttribute="trailing" id="XUm-Yi-qID"/>
                 <constraint firstItem="PG4-zU-nlk" firstAttribute="leading" secondItem="H3N-Cc-MVz" secondAttribute="leading" id="bdS-EK-EME"/>
                 <constraint firstItem="H3N-Cc-MVz" firstAttribute="bottom" secondItem="PG4-zU-nlk" secondAttribute="bottom" id="eAA-vE-CYW"/>
+                <constraint firstItem="ngP-zG-rEz" firstAttribute="leading" secondItem="H3N-Cc-MVz" secondAttribute="leading" id="qfc-Pz-4UK"/>
             </constraints>
             <point key="canvasLocation" x="-29" y="88"/>
         </view>
