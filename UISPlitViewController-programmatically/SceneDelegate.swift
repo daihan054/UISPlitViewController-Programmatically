@@ -17,28 +17,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
-        // Create instances of Master and Detail view controllers
+        
         let masterVC = MasterViewController(nibName: "MasterViewController", bundle: nil)
         let detailVC = DetailViewController(nibName: "DetailViewController", bundle: nil)
         let masterNav = UINavigationController(rootViewController: masterVC)
         let detailNav = UINavigationController(rootViewController: detailVC)
         let splitViewController = UISplitViewController()
-
-        // Set view controllers based on device type
+        splitViewController.viewControllers = [masterNav, detailNav]
+        
         if UIDevice.current.userInterfaceIdiom == .pad {
-            // For iPad, show both master and detail
-            splitViewController.viewControllers = [masterNav, detailNav]
             splitViewController.preferredDisplayMode = .allVisible
         } else {
-            // For iPhone, only show the master view initially
-            splitViewController.viewControllers = [masterNav, detailNav]
             splitViewController.preferredDisplayMode = .oneBesideSecondary
-            splitViewController.delegate = self // Add a delegate to control the behavior
+            splitViewController.delegate = self
         }
         
         let firstMonster = masterVC.monsters.first
         detailVC.monster = firstMonster
-        masterVC.delegate = detailVC
         
         window?.rootViewController = splitViewController
         window?.makeKeyAndVisible()

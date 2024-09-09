@@ -7,14 +7,9 @@
 
 import UIKit
 
-protocol MonsterSelectionDelegate: AnyObject {
-  func monsterSelected(_ newMonster: Monster)
-}
-
-class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MasterViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    weak var delegate: MonsterSelectionDelegate?
 
     let monsters = [
         Monster(name: "Cat-Bot", description: "MEE-OW",
@@ -37,17 +32,13 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
         
         self.tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "CustomCell")
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+}
 
+extension MasterViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Table view data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return monsters.count
     }
 
@@ -62,17 +53,13 @@ class MasterViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedMonster = monsters[indexPath.row]
-        delegate?.monsterSelected(selectedMonster)
-        if let detailViewController = delegate as? DetailViewController,
-            let detailNavigationController = detailViewController.navigationController {
-            splitViewController?
-                .showDetailViewController(detailNavigationController, sender: nil)
-        }
-
+        let detailVC = DetailViewController(nibName: "DetailViewController", bundle: nil)
+        detailVC.monster = selectedMonster
+        splitViewController?
+            .showDetailViewController(detailVC, sender: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50.0
     }
-
 }

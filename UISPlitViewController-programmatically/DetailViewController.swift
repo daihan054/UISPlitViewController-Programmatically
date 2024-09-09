@@ -22,7 +22,6 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
     private func refreshUI() {
@@ -33,11 +32,4 @@ class DetailViewController: UIViewController {
       weaponImageView.image = monster?.weapon.image
       
     }
-
-}
-
-extension DetailViewController: MonsterSelectionDelegate {
-  func monsterSelected(_ newMonster: Monster) {
-    monster = newMonster
-  }
 }
